@@ -9,7 +9,7 @@ function computerPlay() {
   //assign number to value
 
   let pcShape = shapes[randomShapeNumber];
-  console.log(pcShape)
+  console.log(pcShape);
 }
 
 computerPlay();
