@@ -11,5 +11,5 @@ function computerPlay() {
   let pcShape = shapes[randomShapeNumber];
   console.log(pcShape);
 }
-
+//test
 computerPlay();
