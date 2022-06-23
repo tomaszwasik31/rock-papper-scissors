@@ -1,0 +1,15 @@
+// Computer choose random shape
+
+function computerPlay() {
+  //Array of shapes
+  let shapes = ["Rock", "Paper", "Scissors"];
+  //  random number  from array
+
+  let randomShapeNumber = Math.floor(Math.random() * shapes.length);
+  //assign number to value
+
+  let pcShape = shapes[randomShapeNumber];
+  console.log(pcShape)
+}
+
+computerPlay();
