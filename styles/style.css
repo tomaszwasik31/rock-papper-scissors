@@ -1,0 +1,20 @@
+body {
+  background-color: #b8b8b8;
+}
+
+.page-wrapper {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.display{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#btnReset{
+    display: none;
+}

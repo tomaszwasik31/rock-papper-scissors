@@ -1,0 +1,131 @@
+//Array of shapes
+let shapes = ["rock", "paper", "scissors"];
+
+// Starting value
+let computerScore = 0;
+let playerScore = 0;
+let round = 0;
+
+let message = "";
+
+// Computer choose random shape from array
+function computerPlay() {
+  //  random number  from array
+  let randomShapeNumber = Math.floor(Math.random() * shapes.length);
+
+  //assign number to value
+  let computerSelection = shapes[randomShapeNumber];
+  return computerSelection;
+}
+
+const btnRock = document.getElementById("rock");
+const btnPaper = document.getElementById("paper");
+const btnScissors = document.getElementById("scissors");
+const roundDisplay = document.getElementById("roundDisplay");
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const generalDisplay = document.getElementById("generalDisplay");
+
+const btnShapes = document.getElementById("btn-shapes");
+const btnReset = document.getElementById("btnReset");
+
+btnRock.addEventListener("click", () => {
+  playerSelection = "rock";
+  computerSelection = computerPlay();
+  playRound(playerSelection, computerSelection);
+  roundDisplay.textContent = `Round: ${round}`;
+  playerDisplay.textContent = `Player Score: ${playerScore}`;
+  computerDisplay.textContent = `Computer Score: ${computerScore}`;
+  generalDisplay.textContent = message;
+});
+
+btnPaper.addEventListener("click", () => {
+  playerSelection = "paper";
+  computerSelection = computerPlay();
+  playRound(playerSelection, computerSelection);
+  roundDisplay.textContent = `Round: ${round}`;
+  playerDisplay.textContent = `Player Score: ${playerScore}`;
+  computerDisplay.textContent = `Computer Score: ${computerScore}`;
+  generalDisplay.textContent = message;
+});
+
+btnScissors.addEventListener("click", () => {
+  playerSelection = "scissors";
+  computerSelection = computerPlay();
+  playRound(playerSelection, computerSelection);
+  roundDisplay.textContent = `Round: ${round}`;
+  playerDisplay.textContent = `Player Score: ${playerScore}`;
+  computerDisplay.textContent = `Computer Score: ${computerScore}`;
+  generalDisplay.textContent = message;
+});
+
+btnReset.addEventListener("click", ()=>{
+  window.location.reload();
+} );
+
+function playRound() {
+  if (playerSelection === computerSelection) {
+    message = `Round Tie!`;
+  } else if (playerSelection === "rock" && computerSelection === "paper") {
+    computerScore++;
+    message = `You lose round! Paper beats Rock!`;
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    playerScore++;
+    message = `You win round! Scissors beats Rock!`;
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    computerScore++;
+    message = `You lose round! Scissors beats Paper!`;
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    playerScore++;
+    message = `You win round! Paper beats Rock!`;
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    computerScore++;
+    message = `You lose round! Rock beats Scissors! `;
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    playerScore++;
+    message = `You win round! Scissors beats Paper`;
+  } else {
+    computerScore++;
+    message = `Wrong input! Round lost!`;
+  }
+  round++;
+
+  if (playerScore == 5) {
+    message = `You won a game! You:5 Computer ${computerScore}`;
+    playerDisplay.style.cssText = "background:green;";
+    computerDisplay.style.cssText = "background:red;";
+    btnShapes.style.cssText= "display:none";
+    btnReset.style.cssText= "display:inline";
+  }
+  if (computerScore == 5) {
+    message = `You lost a game! You: ${playerScore} Computer: 5`;
+    playerDisplay.style.cssText = "background:red;";
+    computerDisplay.style.cssText = "background:green;";
+    btnShapes.style.cssText= "display:none";
+    btnReset.style.cssText= "display:inline";
+  }
+}
+
+// // game with  loop for 5 rounds
+// function game() {
+//   console.log(`Game started! Type your shape! Game has five rounds!`);
+//   for (let i = 0; i < 5; i++) {
+//     playRound(playerInput(), computerPlay());
+//   }
+//   console.log(`Game Over! Results:`);
+//   if (playerScore > computerScore) {
+//     console.log(
+//       `You win game! Final score: Player Score: ${playerScore} Computer score ${computerScore}`
+//     );
+//   } else if (playerScore < computerScore) {
+//     console.log(
+//       `You lose game! Final score: Player Score: ${playerScore} Computer score ${computerScore}`
+//     );
+//   } else {
+//     console.log(
+//       `Game Tie! Final score: Player Score: ${playerScore} Computer score ${computerScore}`
+//     );
+//   }
+// }
+
+// game();
