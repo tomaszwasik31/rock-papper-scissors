@@ -31,37 +31,31 @@ const btnReset = document.getElementById("btnReset");
 
 btnRock.addEventListener("click", () => {
   playerSelection = "rock";
-  computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-  roundDisplay.textContent = `Round: ${round}`;
-  playerDisplay.textContent = `Player Score: ${playerScore}`;
-  computerDisplay.textContent = `Computer Score: ${computerScore}`;
-  generalDisplay.textContent = message;
+  output();
 });
 
 btnPaper.addEventListener("click", () => {
   playerSelection = "paper";
-  computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-  roundDisplay.textContent = `Round: ${round}`;
-  playerDisplay.textContent = `Player Score: ${playerScore}`;
-  computerDisplay.textContent = `Computer Score: ${computerScore}`;
-  generalDisplay.textContent = message;
+  output();
 });
 
 btnScissors.addEventListener("click", () => {
   playerSelection = "scissors";
+  output();
+});
+
+btnReset.addEventListener("click", () => {
+  window.location.reload();
+});
+
+function output() {
   computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
   roundDisplay.textContent = `Round: ${round}`;
   playerDisplay.textContent = `Player Score: ${playerScore}`;
   computerDisplay.textContent = `Computer Score: ${computerScore}`;
   generalDisplay.textContent = message;
-});
-
-btnReset.addEventListener("click", ()=>{
-  window.location.reload();
-} );
+}
 
 function playRound() {
   if (playerSelection === computerSelection) {
@@ -94,15 +88,15 @@ function playRound() {
     message = `You won a game! You:5 Computer ${computerScore}`;
     playerDisplay.style.cssText = "background:green;";
     computerDisplay.style.cssText = "background:red;";
-    btnShapes.style.cssText= "display:none";
-    btnReset.style.cssText= "display:inline";
+    btnShapes.style.cssText = "display:none";
+    btnReset.style.cssText = "display:inline";
   }
   if (computerScore == 5) {
     message = `You lost a game! You: ${playerScore} Computer: 5`;
     playerDisplay.style.cssText = "background:red;";
     computerDisplay.style.cssText = "background:green;";
-    btnShapes.style.cssText= "display:none";
-    btnReset.style.cssText= "display:inline";
+    btnShapes.style.cssText = "display:none";
+    btnReset.style.cssText = "display:inline";
   }
 }
 
